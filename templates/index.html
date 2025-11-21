@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="title">¡Bienvenido, {{ usuario }}!</h2>
+<p class="subtitle">Selecciona un módulo para comenzar tu aprendizaje:</p>
+<div class="buttons">
+  <a href="{{ url_for('fisica') }}" class="btn">Física</a>
+  <a href="{{ url_for('matematicas') }}" class="btn">Matemáticas</a>
+  <a href="{{ url_for('tecnologia') }}" class="btn">Tecnología</a>
+  <a href="{{ url_for('simulador') }}" class="btn">Simulador</a>
+</div>
+{% endblock %}

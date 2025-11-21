@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FisiomathBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <h1>FisiomathBot</h1>
+    <ul>
+      {% if session.get('usuario') %}
+        <li><a href="{{ url_for('index') }}">Inicio</a></li>
+        <li><a href="{{ url_for('fisica') }}">Física</a></li>
+        <li><a href="{{ url_for('matematicas') }}">Matemáticas</a></li>
+        <li><a href="{{ url_for('tecnologia') }}">Tecnología</a></li>
+        <li><a href="{{ url_for('simulador') }}">Simulador</a></li>
+        <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+      {% else %}
+        <li><a href="{{ url_for('login') }}">Iniciar Sesión</a></li>
+        <li><a href="{{ url_for('register') }}">Registrarse</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <div class="container">
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+      {% if mensajes %}
+        {% for categoria, mensaje in mensajes %}
+          <div class="flash {{ categoria }}">{{ mensaje }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="footer">
+    <p> FisiomathBot - El mundo del aprendizaje</p>
+  </footer>
+</body>
+</html>

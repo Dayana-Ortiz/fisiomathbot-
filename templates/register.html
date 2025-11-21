@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="title">Crear Cuenta</h2>
+<form method="POST" class="form-card">
+  <input type="text" name="nombre" placeholder="Nombre completo" required>
+  <input type="email" name="correo" placeholder="Correo electrónico" required>
+  <input type="password" name="contrasena" placeholder="Contraseña" required>
+  <button type="submit" class="btn">Registrarme</button>
+  <p class="small-text">¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión aquí</a></p>
+</form>
+{% endblock %}
